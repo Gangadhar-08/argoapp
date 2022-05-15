@@ -25,7 +25,9 @@ spec:
             echo "Hello I am a function"
             que_url=$(curl -i -H 'Accept: application/json' http://34.100.140.136:8080/job/slack_notif/build?token=token123 --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22 | grep Location | awk '{print $2}')
             que_url="${que_url}api/json?pretty=true"
-            echo "$que_url"
+            job_url_jobid="null"
+            while [ "$job_url_jobid" = "null" ]; do job_url_jobid=`curl $que_url --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22 | jq -r '.executable.url'`; sleep 5s; done
+            echo "$job_url_jobid"
             } && print_something
       restartPolicy: OnFailure
   backoffLimit: 4
