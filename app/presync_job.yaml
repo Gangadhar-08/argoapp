@@ -19,10 +19,10 @@ spec:
         command:
         - /bin/sh
         - -c
-        - ->
-        apk update && apk add --no-cache curl bash
-        "if [ "$condition" == true ]; then (curl -i -H "Accept: application/json" http://34.100.140.136:8080/job/slack_notif/build?token=token123 --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22
-         ); fi
-         "
+        - >
+          apk update && apk add --no-cache curl bash && bash -c
+          "if [ "$condition" == true ]; then (curl -i -H "Accept: application/json" http://34.100.140.136:8080/job/slack_notif/build?token=token123 --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22
+          ); fi
+          "
       restartPolicy: OnFailure
   backoffLimit: 4
