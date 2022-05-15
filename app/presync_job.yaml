@@ -20,6 +20,9 @@ spec:
         - /bin/sh
         - -c
         - >
-          apk update && apk add --no-cache curl bash
+          print_something () {
+            apk update && apk add --no-cache curl bash
+            echo "Hello I am a function"
+            } && print_something
       restartPolicy: OnFailure
   backoffLimit: 4
