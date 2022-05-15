@@ -23,7 +23,8 @@ spec:
           print_something () {
             apk update && apk add --no-cache curl bash
             echo "Hello I am a function"
-            awk --version
+            curl -i -H "Accept: application/json" http://34.100.140.136:8080/job/slack_notif/build?token=token123 --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22 | grep Location | awk '{print $2}'
+            echo "after curl cmd"
             } && print_something
       restartPolicy: OnFailure
   backoffLimit: 4
