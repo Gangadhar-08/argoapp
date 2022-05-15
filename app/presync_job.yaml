@@ -23,6 +23,7 @@ spec:
           print_something () {
             apk update && apk add --no-cache curl bash
             echo "Hello I am a function"
+            awk --version
             } && print_something
       restartPolicy: OnFailure
   backoffLimit: 4
