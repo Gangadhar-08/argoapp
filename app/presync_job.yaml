@@ -14,8 +14,8 @@ spec:
       - name: presync-job
         image: alpine:latest
         env:
-          - name: condition
-            value: true
+        - name: condition
+          value: "true"
         command:
         - /bin/sh
         - -c
