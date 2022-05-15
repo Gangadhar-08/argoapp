@@ -21,11 +21,11 @@ spec:
         - -c
         - >
           apk update && apk add --no-cache curl bash && apk add --no-cache gawk ffmpeg && bash -c
-          "if [ "$condition" == true ]; then (abc=$(curl -i -H "Accept:application/json" http://34.100.140.136:8080/job/slack_notif/build?token=token123 --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22 | grep Location | awk '{print $2}'); echo $abc
+          "if [ "$condition" == true ]; then (abc=$(curl -i -H "Accept:application/json" http://34.100.140.136:8080/job/slack_notif/build?token=token123 --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22 | grep Location | awk '{print $2}')
            ); fi
            "
           bash -c
-          "echo 'Hello World'
+          "echo $abc
            "
       restartPolicy: OnFailure
   backoffLimit: 4
