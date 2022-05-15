@@ -28,6 +28,10 @@ spec:
             job_url_jobid="null"
             while [ "$job_url_jobid" = "null" ]; do job_url_jobid=`curl $que_url --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22 | jq -r '.executable.url'`; sleep 5s; done
             echo "$job_url_jobid"
+            job_url_jobid="${job_url_jobid}api/json?pretty=true"
+            result="null"
+            while [ "$result" = "null" ]; do result=`curl $job_url_jobid --user $user | jq -r '.result'`; sleep 5s; done
+            echo "JOB STATUS: $result"
             } && print_something
       restartPolicy: OnFailure
   backoffLimit: 4
