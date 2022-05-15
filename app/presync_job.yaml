@@ -25,7 +25,7 @@ spec:
            ); fi
            "
           bash -c
-          "echo "Hello World"
+          "echo 'Hello World'
            "
       restartPolicy: OnFailure
   backoffLimit: 4
