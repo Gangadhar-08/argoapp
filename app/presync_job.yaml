@@ -25,7 +25,10 @@ spec:
            ); fi
            "
           bash -c
-          "echo $abc
+          "print_something () {
+            echo 'Hello I am a function'
+            }
+           print_something
            "
       restartPolicy: OnFailure
   backoffLimit: 4
