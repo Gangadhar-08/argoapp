@@ -33,8 +33,8 @@ spec:
             while [ "$result" = "null" ]; do result=`curl $job_url_jobid --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22 | jq -r '.result'`; sleep 5s; done
             echo "JOB STATUS: $result"
             } && if [ "$condition" == false ]; then Jenkins; fi && bash -c
-          "if [ "$condition" == true ]; then (echo 'code checked'
-           ); fi
-           "
+            "if [ "$condition" == true ]; then (echo 'code checked'
+            ); fi
+            "
       restartPolicy: OnFailure
   backoffLimit: 4
