@@ -22,17 +22,17 @@ spec:
         - >
           apk update && apk add --no-cache curl bash && apk add jq && 
           Jenkins () {
-            echo "Hello I am a function"
+            echo "Jenkis Job started"
             RED='\033[0;31m'
             que_url=$(curl -i -H 'Accept: application/json' http://34.100.140.136:8080/job/slack_notif/build?token=token123 --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22 | grep Location | awk '{print $2}')
             que_url="${que_url}api/json?pretty=true"
             job_url_jobid="null"
             while [ "$job_url_jobid" = "null" ]; do job_url_jobid=`curl $que_url --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22 | jq -r '.executable.url'`; sleep 5s; done
-            echo "${RED}JENKINS JOB URL: $job_url_jobid"
+            echo -e "${RED}JENKINS JOB URL: $job_url_jobid"
             job_url_jobid="${job_url_jobid}api/json?pretty=true"
             result="null"
             while [ "$result" = "null" ]; do result=`curl $job_url_jobid --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22 | jq -r '.result'`; sleep 5s; done
-            echo "${RED}JOB STATUS: $result"
+            echo "JOB STATUS: $result"
             } && if [ "$condition" == true ]; then Jenkins; fi && 
           bash -c
           "if [ "$condition" == true ]; then (echo 'code checked'
