@@ -7,7 +7,7 @@ spec:
   host: webapp1service.webapp.svc.cluster.local
   trafficPolicy:
     loadBalancer:
-      simple: RANDOM
+      simple: ROUND_ROBIN
   subsets:
   - name: webapp-subset1
     labels:
@@ -17,5 +17,5 @@ spec:
       rakam: v2
     trafficPolicy:
       loadBalancer:
-        simple: ROUND_ROBIN
+        simple: RANDOM
 
