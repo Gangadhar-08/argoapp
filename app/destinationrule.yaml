@@ -15,7 +15,4 @@ spec:
   - name: webapp-subset2
     labels:
       rakam: v2
-    trafficPolicy:
-      loadBalancer:
-        simple: RANDOM
 
