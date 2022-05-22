@@ -13,7 +13,7 @@ spec:
   - route:
     - destination:
         host: webapp1service.webapp.svc.cluster.local
-      weight: 100
+      weight: 50
     - destination:
         host: webapp2service.webapp.svc.cluster.local
-      weight: 0
+      weight: 50
