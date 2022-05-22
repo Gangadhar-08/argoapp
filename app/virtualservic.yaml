@@ -16,10 +16,10 @@ spec:
         subset: webapp-subset1
         port:
           number: 9090
-      weight: 0
+      weight: 50
     - destination:
         host: webapp1service.webapp.svc.cluster.local
         subset: webapp-subset2
         port:
           number: 9090
-      weight: 100
+      weight: 50
