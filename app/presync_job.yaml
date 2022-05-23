@@ -31,7 +31,7 @@ spec:
             echo -e "${RED}JENKINS JOB URL: $job_url_jobid"
             job_url_jobid="${job_url_jobid}api/json?pretty=true"
             result="null"
-            while [ "$result" = "null" ]; do result=`curl $job_url_jobid --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22 | jq -r '.result'`; sleep 5s; done
+            while [ "$result" = "null" ]; do result=$(curl $job_url_jobid --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22 | jq -r '.result'); sleep 5s; done
             echo -e "${RED}JOB STATUS: $result"
             } && if [ "$condition" == true ]; then Jenkins; fi && 
           bash -c
