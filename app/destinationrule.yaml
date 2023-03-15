@@ -1,6 +1,8 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
   name: webapp-destination-rule
   namespace: webapp
 spec:
