@@ -1,42 +1,42 @@
 apiVersion: batch/v1
-kind: Job
-metadata:
-  generateName: schema-migrate-
-  annotations:
-    argocd.argoproj.io/hook: PreSync
-spec:
-  template:
-    metadata:
-      annotations:
-        sidecar.istio.io/inject: "false"
-    spec:
-      containers:
-      - name: presync-job
-        image: alpine:latest
-        env:
-        - name: condition
-          value: "true"
-        command:
-        - /bin/sh
-        - -c
-        - >
-          apk update && apk add --no-cache curl bash && apk add jq && 
-          Jenkins () {
-            echo "Jenkis Job started"
-            RED='\033[0;32m'
-            que_url=$(curl -i -H 'Accept: application/json' http://35.244.18.94:8080/job/slack_notif/build?token=token123 --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22 | grep Location | awk '{print $2}')
-            que_url="${que_url}api/json?pretty=true"
-            job_url_jobid="null"
-            while [ "$job_url_jobid" = "null" ]; do job_url_jobid=`curl $que_url --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22 | jq -r '.executable.url'`; sleep 5s; done
-            echo -e "${RED}JENKINS JOB URL: $job_url_jobid"
-            job_url_jobid="${job_url_jobid}api/json?pretty=true"
-            result="null"
-            while [ "$result" = "null" ]; do result=$(curl $job_url_jobid --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22 | jq -r '.result'); sleep 5s; done
-            echo -e "${RED}JOB STATUS: $result"
-            } && if [ "$condition" == true ]; then Jenkins; fi && 
-          bash -c
-          "if [ "$condition" == true ]; then (echo 'code checked'
-           ); fi
-           "
-      restartPolicy: OnFailure
-  backoffLimit: 4
+# kind: Job
+# metadata:
+#   generateName: schema-migrate-
+#   annotations:
+#     argocd.argoproj.io/hook: PreSync
+# spec:
+#   template:
+#     metadata:
+#       annotations:
+#         sidecar.istio.io/inject: "false"
+#     spec:
+#       containers:
+#       - name: presync-job
+#         image: alpine:latest
+#         env:
+#         - name: condition
+#           value: "true"
+#         command:
+#         - /bin/sh
+#         - -c
+#         - >
+#           apk update && apk add --no-cache curl bash && apk add jq && 
+#           Jenkins () {
+#             echo "Jenkis Job started"
+#             RED='\033[0;32m'
+#             que_url=$(curl -i -H 'Accept: application/json' http://35.244.18.94:8080/job/slack_notif/build?token=token123 --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22 | grep Location | awk '{print $2}')
+#             que_url="${que_url}api/json?pretty=true"
+#             job_url_jobid="null"
+#             while [ "$job_url_jobid" = "null" ]; do job_url_jobid=`curl $que_url --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22 | jq -r '.executable.url'`; sleep 5s; done
+#             echo -e "${RED}JENKINS JOB URL: $job_url_jobid"
+#             job_url_jobid="${job_url_jobid}api/json?pretty=true"
+#             result="null"
+#             while [ "$result" = "null" ]; do result=$(curl $job_url_jobid --user gangadhar:11e616607d1ca4ca1d264d2d645780ad22 | jq -r '.result'); sleep 5s; done
+#             echo -e "${RED}JOB STATUS: $result"
+#             } && if [ "$condition" == true ]; then Jenkins; fi && 
+#           bash -c
+#           "if [ "$condition" == true ]; then (echo 'code checked'
+#            ); fi
+#            "
+#       restartPolicy: OnFailure
+#   backoffLimit: 4
