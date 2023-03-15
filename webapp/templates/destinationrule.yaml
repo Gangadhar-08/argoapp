@@ -1,0 +1,23 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+  name: webapp-destination-rule
+  namespace: webapp
+spec:
+  host: webapp1service.webapp.svc.cluster.local
+  trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
+  subsets:
+  - name: webapp-subset1
+    labels:
+      rakam: v1
+  - name: webapp-subset2
+    labels:
+      rakam: v2
+    trafficPolicy:
+      loadBalancer:
+        simple: ROUND_ROBIN
+
